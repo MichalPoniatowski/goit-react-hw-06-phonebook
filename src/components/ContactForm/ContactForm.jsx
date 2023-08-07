@@ -1,10 +1,24 @@
 import css from './ContactForm.module.css';
 
-const ContactForm = ({ submit }) => {
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/actions';
+
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
+  const handlesubmit = event => {
+    const form = event.target;
+    event.preventDefault();
+    const nameValue = event.target.elements.name.value;
+    const numberValue = event.target.elements.number.value;
+    dispatch(addContact({ name: nameValue, number: numberValue }));
+    form.reset();
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <form onSubmit={submit} className={css.contact}>
+      <form onSubmit={handlesubmit} className={css.contact}>
         <span>Name:</span>
         <input
           type="text"

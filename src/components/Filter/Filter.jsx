@@ -1,6 +1,22 @@
-import css from './Filter.module.css';
+import { useDispatch } from 'react-redux';
 
-const Filter = ({ filteredContacts }) => {
+import css from './Filter.module.css';
+import { filterContacts } from '../../redux/actions';
+
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const handleFiltredContacts = event => {
+    event.preventDefault();
+    const filteredContact = event.target.value;
+    dispatch(filterContacts(filteredContact.toLowerCase().trim()));
+  };
+
+  // const renderContacts = () => {
+  //   const filteredContacts = contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
+
   return (
     <div className={css.filter}>
       <span>Find contacts by name: </span>
@@ -10,7 +26,7 @@ const Filter = ({ filteredContacts }) => {
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
-        onChange={filteredContacts}
+        onChange={handleFiltredContacts}
         placeholder="Type name"
       />
     </div>
