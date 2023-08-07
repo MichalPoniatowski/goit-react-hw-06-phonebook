@@ -1,4 +1,4 @@
-import { useDispatch, nanoid } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { deleteContact } from '../../redux/actions';
 

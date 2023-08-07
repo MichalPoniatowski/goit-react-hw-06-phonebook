@@ -12,11 +12,6 @@ export const Filter = () => {
     dispatch(filterContacts(filteredContact.toLowerCase().trim()));
   };
 
-  // const renderContacts = () => {
-  //   const filteredContacts = contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(filter.toLowerCase())
-  //   );
-
   return (
     <div className={css.filter}>
       <span>Find contacts by name: </span>
@@ -27,7 +22,7 @@ export const Filter = () => {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
         onChange={handleFiltredContacts}
-        placeholder="Type name"
+        placeholder="Search by name"
       />
     </div>
   );
